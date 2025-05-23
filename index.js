@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const { ApolloServer } = require('apollo-server-express');
 const typeDefs = require('./src/schema');
 const resolvers = require('./src/resolvers');
@@ -7,18 +8,9 @@ const { authenticate } = require('./src/middleware/auth');
 
 const prisma = new PrismaClient();
 const app = express();
-const PORT = process.env.PORT || 4000;
+app.use(cors());
 
-// Enable CORS
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(200);
-  }
-  next();
-});
+const PORT = process.env.PORT || 4000;
 
 async function startApolloServer() {
   const server = new ApolloServer({
