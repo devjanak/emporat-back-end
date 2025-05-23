@@ -1,0 +1,32 @@
+{
+    "name": "backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js",
+        "migrate": "prisma migrate dev",
+        "seed": "node prisma/seed.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@prisma/client": "^6.8.2",
+        "apollo-server-express": "^3.13.0",
+        "bcryptjs": "^3.0.2",
+        "dotenv": "^16.5.0",
+        "express": "^4.18.2",
+        "graphql": "^16.11.0",
+        "jsonwebtoken": "^9.0.2"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.10",
+        "prisma": "^6.8.2"
+    },
+    "type": "commonjs",
+    "prisma": {
+        "seed": "node prisma/seed.js"
+    }
+}
